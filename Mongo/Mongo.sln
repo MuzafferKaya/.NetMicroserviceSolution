@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{892ED2C9-461D-46E6-9664-403FD328B540}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{A5795607-2A4E-407F-ACCF-F03B60EAFAFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{7A38A7D3-629C-41E4-AAE0-A9823B2A7725}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.CouponAPI", "Services\Mongo.Services.CouponAPI\Mongo.Services.CouponAPI.csproj", "{78EC7240-212D-40E4-B5E6-B04443231FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Services.AuthAPI", "Services\Mongo.Services.AuthAPI\Mongo.Services.AuthAPI.csproj", "{003ED105-4BFE-4CF2-AD41-4BCF56755E1D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78EC7240-212D-40E4-B5E6-B04443231FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78EC7240-212D-40E4-B5E6-B04443231FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78EC7240-212D-40E4-B5E6-B04443231FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78EC7240-212D-40E4-B5E6-B04443231FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{003ED105-4BFE-4CF2-AD41-4BCF56755E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{003ED105-4BFE-4CF2-AD41-4BCF56755E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{003ED105-4BFE-4CF2-AD41-4BCF56755E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{003ED105-4BFE-4CF2-AD41-4BCF56755E1D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78EC7240-212D-40E4-B5E6-B04443231FAD} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
+		{003ED105-4BFE-4CF2-AD41-4BCF56755E1D} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0B7AA55-A8A1-4FF1-88D0-7876A007E188}
+	EndGlobalSection
+EndGlobal
