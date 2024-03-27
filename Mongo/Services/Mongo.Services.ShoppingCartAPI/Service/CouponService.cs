@@ -4,26 +4,26 @@ using Newtonsoft.Json;
 
 namespace Mongo.Services.ShoppingCartAPI.Service
 {
-    public class ProductService : IProductService
+    public class CouponService : ICouponService
     {
         private readonly IHttpClientFactory _factory;
 
-        public ProductService(IHttpClientFactory factory)
+        public CouponService(IHttpClientFactory factory)
         {
             this._factory = factory;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetProducts()
+        public async Task<CouponDto> GetCoupon(string couponCode)
         {
-            var client = _factory.CreateClient("Product");
-            var response = await client.GetAsync($"/api/product");
+            var client = _factory.CreateClient("Coupon");
+            var response = await client.GetAsync($"/api/coupon/GetByCode/{couponCode}");
             var apiContent = await response.Content.ReadAsStringAsync();
             var resp = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
-            if(resp.IsSuccess)
+            if (resp.IsSuccess)
             {
-                return JsonConvert.DeserializeObject<IEnumerable<ProductDto>>(Convert.ToString(resp.Results));
+                return JsonConvert.DeserializeObject<CouponDto>(Convert.ToString(resp.Results));
             }
-            return new List<ProductDto>();
+            return new CouponDto();
         }
     }
 }

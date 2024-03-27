@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Mongo.Services.ShoppingCartAPI.Data;
+using Mongo.Services.ProductAPI.Data;
 
 #nullable disable
 
-namespace Mongo.Services.ShoppingCartAPI.Migrations
+namespace Mongo.Services.ProductAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Mongo.Services.ShoppingCartAPI.Data;
 using Mongo.Services.ShoppingCartAPI.Models;
 using Mongo.Services.ShoppingCartAPI.Models.Dto;
+using Mongo.Services.ShoppingCartAPI.Service.IService;
 
 namespace Mongo.Services.ShoppingCartAPI.Controllers
 {
@@ -13,15 +14,21 @@ namespace Mongo.Services.ShoppingCartAPI.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IProductService _productService;
+        private readonly ICouponService _couponService;
         private ResponseDto _response;
 
         public CartAPIController(
             AppDbContext context,
-            IMapper mapper
+            IMapper mapper,
+            IProductService productService,
+            ICouponService couponService
             )
         {
             this._context = context;
             this._mapper = mapper;
+            this._productService = productService;
+            this._couponService = couponService;
             _response = new ResponseDto();
         }
 
@@ -37,9 +44,23 @@ namespace Mongo.Services.ShoppingCartAPI.Controllers
                 cart.CartDetails = _mapper.Map<IEnumerable<CartDetailsDto>>(_context.CartDetails
                     .Where(u => u.CartHeaderId == cart.CartHeader.CartHeaderId));
 
+                IEnumerable<ProductDto> productDtos = await _productService.GetProducts();
+
                 foreach (var item in cart.CartDetails)
                 {
+                    item.Product = productDtos.FirstOrDefault(u => u.ProductId == item.ProductId);
                     cart.CartHeader.CartTotal += (item.Count * item.Product.Price);
+                }
+
+                //apply coupon if any
+                if (!string.IsNullOrEmpty(cart.CartHeader.CouponCode))
+                {
+                    CouponDto coupon = await _couponService.GetCoupon(cart.CartHeader.CouponCode);
+                    if (coupon != null && cart.CartHeader.CartTotal > coupon.MinAmount)
+                    {
+                        cart.CartHeader.CartTotal -= coupon.DiscountAmount;
+                        cart.CartHeader.Discount = coupon.DiscountAmount;
+                    }
                 }
 
                 _response.Results = cart;
@@ -48,6 +69,44 @@ namespace Mongo.Services.ShoppingCartAPI.Controllers
             {
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
+            }
+            return _response;
+        }
+
+        [HttpPost("ApplyCoupon")]
+        public async Task<ResponseDto> ApplyCoupon(CartDto cartDto)
+        {
+            try
+            {
+                var cartFromDb = await _context.CartHeaders.FirstAsync(u => u.UserId == cartDto.CartHeader.UserId);
+                cartFromDb.CouponCode = cartDto.CartHeader.CouponCode;
+                _context.CartHeaders.Update(cartFromDb);
+                await _context.SaveChangesAsync();
+                _response.Results = true;
+            }
+            catch (Exception ex)
+            {
+                _response.Message = ex.Message.ToString();
+                _response.IsSuccess = false;
+            }
+            return _response;
+        }
+
+        [HttpPost("RemoveCoupon")]
+        public async Task<ResponseDto> RemoveCoupon(CartDto cartDto)
+        {
+            try
+            {
+                var cartFromDb = await _context.CartHeaders.FirstAsync(u => u.UserId == cartDto.CartHeader.UserId);
+                cartFromDb.CouponCode = string.Empty;
+                _context.CartHeaders.Update(cartFromDb);
+                await _context.SaveChangesAsync();
+                _response.Results = true;
+            }
+            catch (Exception ex)
+            {
+                _response.Message = ex.Message.ToString();
+                _response.IsSuccess = false;
             }
             return _response;
         }

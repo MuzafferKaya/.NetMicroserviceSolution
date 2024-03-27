@@ -27,6 +27,7 @@ namespace Mongo.Services.CouponAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ResponseDto Get()
         {
             try
@@ -44,6 +45,7 @@ namespace Mongo.Services.CouponAPI.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
+        [AllowAnonymous]
         public ResponseDto Get(int id)
         {
             try
@@ -61,6 +63,7 @@ namespace Mongo.Services.CouponAPI.Controllers
 
         [HttpGet]
         [Route("GetByCode/{code}")]
+        [AllowAnonymous]
         public ResponseDto Get(string code)
         {
             try

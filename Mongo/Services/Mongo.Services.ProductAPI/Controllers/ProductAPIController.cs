@@ -27,6 +27,7 @@ namespace Mongo.Services.ProductAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ResponseDto Get()
         {
             try
@@ -44,6 +45,7 @@ namespace Mongo.Services.ProductAPI.Controllers
 
         [HttpGet]
         [Route("{id:int}")]
+        [AllowAnonymous]
         public ResponseDto Get(int id)
         {
             try

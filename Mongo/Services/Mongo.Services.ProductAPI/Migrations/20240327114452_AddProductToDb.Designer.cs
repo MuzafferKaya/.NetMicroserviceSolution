@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Mongo.Services.ShoppingCartAPI.Data;
+using Mongo.Services.ProductAPI.Data;
 
 #nullable disable
 
-namespace Mongo.Services.ShoppingCartAPI.Migrations
+namespace Mongo.Services.ProductAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240322063209_AddProductToDb")]
+    [Migration("20240327114452_AddProductToDb")]
     partial class AddProductToDb
     {
         /// <inheritdoc />
