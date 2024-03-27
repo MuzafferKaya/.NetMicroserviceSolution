@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Mongo.Integration.RabbitMQ;
 using Mongo.Services.ShoppingCartAPI;
 using Mongo.Services.ShoppingCartAPI.Data;
 using Mongo.Services.ShoppingCartAPI.Extensions;
@@ -24,6 +25,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddHttpClient("Coupon", u => u.BaseAddress =
 new Uri(builder.Configuration["ServiceUrls:CouponAPI"]));
 builder.Services.AddScoped<ICouponService, CouponService>();
+builder.Services.AddScoped<IMessageProducer, MessageProducer>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

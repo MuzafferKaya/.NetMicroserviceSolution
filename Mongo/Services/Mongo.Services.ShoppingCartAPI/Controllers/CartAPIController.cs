@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Mongo.Integration.RabbitMQ;
 using Mongo.Services.ShoppingCartAPI.Data;
 using Mongo.Services.ShoppingCartAPI.Models;
 using Mongo.Services.ShoppingCartAPI.Models.Dto;
@@ -16,24 +17,29 @@ namespace Mongo.Services.ShoppingCartAPI.Controllers
         private readonly IMapper _mapper;
         private readonly IProductService _productService;
         private readonly ICouponService _couponService;
+        private readonly IMessageProducer _messageBus;
+        private readonly IConfiguration _configuration;
         private ResponseDto _response;
 
         public CartAPIController(
             AppDbContext context,
             IMapper mapper,
             IProductService productService,
-            ICouponService couponService
-            )
+            ICouponService couponService,
+            IMessageProducer messageBus,
+            IConfiguration configuration)
         {
             this._context = context;
             this._mapper = mapper;
             this._productService = productService;
             this._couponService = couponService;
+            this._messageBus = messageBus;
+            this._configuration = configuration;
             _response = new ResponseDto();
         }
 
-        [HttpGet("GetCart/{userId}")]
-        public async Task<ResponseDto> GetCart(string userId)
+        [HttpGet("GetCart")]
+        public async Task<ResponseDto> GetCart([FromQuery] string userId)
         {
             try
             {
@@ -73,8 +79,24 @@ namespace Mongo.Services.ShoppingCartAPI.Controllers
             return _response;
         }
 
+        [HttpPost("EmailCartRequest")]
+        public async Task<ResponseDto> EmailCartRequest([FromBody] CartDto cartDto)
+        {
+            try
+            {
+                _messageBus.PublishMessage(cartDto, _configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCartQueue"));
+                _response.Results = true;
+            }
+            catch (Exception ex)
+            {
+                _response.Message = ex.Message.ToString();
+                _response.IsSuccess = false;
+            }
+            return _response;
+        }
+
         [HttpPost("ApplyCoupon")]
-        public async Task<ResponseDto> ApplyCoupon(CartDto cartDto)
+        public async Task<ResponseDto> ApplyCoupon([FromBody] CartDto cartDto)
         {
             try
             {
@@ -93,7 +115,7 @@ namespace Mongo.Services.ShoppingCartAPI.Controllers
         }
 
         [HttpPost("RemoveCoupon")]
-        public async Task<ResponseDto> RemoveCoupon(CartDto cartDto)
+        public async Task<ResponseDto> RemoveCoupon([FromBody] CartDto cartDto)
         {
             try
             {
@@ -112,7 +134,7 @@ namespace Mongo.Services.ShoppingCartAPI.Controllers
         }
 
         [HttpPost("CartUpsert")]
-        public async Task<ResponseDto> CartUpsert(CartDto cartDto)
+        public async Task<ResponseDto> CartUpsert([FromBody] CartDto cartDto)
         {
             try
             {

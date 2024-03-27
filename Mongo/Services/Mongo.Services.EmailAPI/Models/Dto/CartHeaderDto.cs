@@ -1,4 +1,4 @@
-﻿namespace Mongo.Services.ShoppingCartAPI.Models.Dto
+﻿namespace Mongo.Services.EmailAPI.Models.Dto
 {
     public class CartHeaderDto
     {
