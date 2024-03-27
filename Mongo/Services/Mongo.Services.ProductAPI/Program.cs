@@ -1,12 +1,10 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Mongo.Services.ProductAPI;
 using Mongo.Services.ProductAPI.Data;
 using Mongo.Services.ProductAPI.Extensions;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

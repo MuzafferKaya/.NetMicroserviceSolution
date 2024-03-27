@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.AuthAPI", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.ProductAPI", "Services\Mongo.Services.ProductAPI\Mongo.Services.ProductAPI.csproj", "{2D8720D1-3A21-48E7-AE80-02DE25AA909F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Services.ShoppingCartAPI", "Services\Mongo.Services.ShoppingCartAPI\Mongo.Services.ShoppingCartAPI.csproj", "{D36BE1CD-1675-4405-AAEC-C3FD3D66C696}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2D8720D1-3A21-48E7-AE80-02DE25AA909F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8720D1-3A21-48E7-AE80-02DE25AA909F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8720D1-3A21-48E7-AE80-02DE25AA909F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D36BE1CD-1675-4405-AAEC-C3FD3D66C696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36BE1CD-1675-4405-AAEC-C3FD3D66C696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36BE1CD-1675-4405-AAEC-C3FD3D66C696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36BE1CD-1675-4405-AAEC-C3FD3D66C696}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{78EC7240-212D-40E4-B5E6-B04443231FAD} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
 		{003ED105-4BFE-4CF2-AD41-4BCF56755E1D} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
 		{2D8720D1-3A21-48E7-AE80-02DE25AA909F} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
+		{D36BE1CD-1675-4405-AAEC-C3FD3D66C696} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0B7AA55-A8A1-4FF1-88D0-7876A007E188}
