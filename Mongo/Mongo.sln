@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.ProductAPI",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.ShoppingCartAPI", "Services\Mongo.Services.ShoppingCartAPI\Mongo.Services.ShoppingCartAPI.csproj", "{D36BE1CD-1675-4405-AAEC-C3FD3D66C696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.Services.EmailAPI", "Services\Mongo.Services.EmailAPI\Mongo.Services.EmailAPI.csproj", "{6550836C-A89E-4287-A3DA-7F5EB116DFC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Services.EmailAPI", "Services\Mongo.Services.EmailAPI\Mongo.Services.EmailAPI.csproj", "{6550836C-A89E-4287-A3DA-7F5EB116DFC2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mongo.Integration.RabbitMQ", "Integration\Mongo.Integration.RabbitMQ\Mongo.Integration.RabbitMQ.csproj", "{75C989E5-2665-44BF-AEAE-28F980C3930A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mongo.GatewaySolition", "Gateway\Mongo.GatewaySolition\Mongo.GatewaySolition.csproj", "{377B9C3A-1D71-4202-B0D7-5E55848A0FC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{75C989E5-2665-44BF-AEAE-28F980C3930A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75C989E5-2665-44BF-AEAE-28F980C3930A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75C989E5-2665-44BF-AEAE-28F980C3930A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377B9C3A-1D71-4202-B0D7-5E55848A0FC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377B9C3A-1D71-4202-B0D7-5E55848A0FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377B9C3A-1D71-4202-B0D7-5E55848A0FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377B9C3A-1D71-4202-B0D7-5E55848A0FC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{D36BE1CD-1675-4405-AAEC-C3FD3D66C696} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
 		{6550836C-A89E-4287-A3DA-7F5EB116DFC2} = {7A6C7D06-F0E5-489D-81FC-2F9AA8FB7B36}
 		{75C989E5-2665-44BF-AEAE-28F980C3930A} = {7A38A7D3-629C-41E4-AAE0-A9823B2A7725}
+		{377B9C3A-1D71-4202-B0D7-5E55848A0FC6} = {A5795607-2A4E-407F-ACCF-F03B60EAFAFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0B7AA55-A8A1-4FF1-88D0-7876A007E188}
