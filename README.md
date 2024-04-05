@@ -1,2 +1,2 @@
 # .NetMicroserviceExample
-ASP.NET 7 Core Microservice Example
+ASP.NET Core 7 Microservice Example
